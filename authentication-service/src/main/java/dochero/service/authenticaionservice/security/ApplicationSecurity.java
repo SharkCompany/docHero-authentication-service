@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ApplicationSecurity {
 
   @Bean
-  public PasswordEncoder passwordEncoder() {
+  public PasswordEncoder  passwordEncoder() {
     return new BCryptPasswordEncoder();
   }
 
