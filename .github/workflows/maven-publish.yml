@@ -30,7 +30,7 @@ jobs:
         
     - name: Maven Build;
       run: 
-        cd account-service;
+        cd authentication-service;
         sh mvnw clean -DskipTests=true package;
     
     - name: Build Docker image
