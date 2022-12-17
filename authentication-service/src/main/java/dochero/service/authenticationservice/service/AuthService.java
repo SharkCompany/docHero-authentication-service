@@ -32,7 +32,7 @@ public class AuthService {
               .build()
       );
     } catch (Exception ex) {
-      throw new WrongPasswordException();
+      throw new WrongPasswordException(ex.toString());
     }
 
     return LoginResponse.builder()
