@@ -4,6 +4,7 @@ package dochero.service.authenticaionservice.web.rest;
 import dochero.service.authenticaionservice.dto.request.LoginRequest;
 import dochero.service.authenticaionservice.dto.response.LoginResponse;
 import dochero.service.authenticaionservice.exception.ValidationException;
+import dochero.service.authenticaionservice.openfeign.AccountServiceFeignClient;
 import dochero.service.authenticaionservice.service.AuthService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -15,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +28,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthenticationController {
 
   private final AuthService authService;
+
+  private final AccountServiceFeignClient accountServiceFeignClient;
 
   @Operation(summary = "Login By Email And Password")
   @ApiResponses(value = {
@@ -51,4 +55,5 @@ public class AuthenticationController {
     }
     return new ResponseEntity<>(authService.grantUser(loginRequest), HttpStatus.OK);
   }
+
 }
