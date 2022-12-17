@@ -27,7 +27,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthenticationController {
 
   private final AuthService authService;
-
   private final AccountServiceFeignClient accountServiceFeignClient;
 
   @Operation(summary = "Login By Email And Password")

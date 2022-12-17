@@ -10,8 +10,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 public class LoginResponse extends BaseResponse{
-
   private String email;
-
-  private String password;
+  private String roleName;
+  private String fullName;
+  private String departmentId;
+  private String accessToken;
+  private Long expired;
 }
