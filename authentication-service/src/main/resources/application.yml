@@ -20,7 +20,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://45.119.84.194:40000/eureka
+      defaultZone: http://103.48.192.223:40000/eureka
 springdoc:
   swagger-ui:
     path: /docs
