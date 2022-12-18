@@ -8,7 +8,6 @@ import dochero.service.authenticationservice.dto.response.LoginResponse;
 import dochero.service.authenticationservice.exception.WrongPasswordException;
 import dochero.service.authenticationservice.openfeign.AccountServiceFeignClient;
 import dochero.service.authenticationservice.security.JwtUtils;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +23,7 @@ public class AuthService {
   public LoginResponse grantUser(LoginRequest loginRequest) {
     AccountDTO accountDTO;
     try {
-       accountDTO = accountServiceFeignClient.validate(
+      accountDTO = accountServiceFeignClient.validate(
           ValidateAccountRequestDTO
               .builder()
               .email(loginRequest.getEmail())

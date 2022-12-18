@@ -13,7 +13,7 @@ public interface AccountServiceFeignClient {
   @GetMapping("/")
   String ping();
 
-  @PostMapping("/api/account/validate")
+  @PostMapping("/validate")
   public AccountDTO validate(@RequestBody ValidateAccountRequestDTO accountPayload);
 
 
