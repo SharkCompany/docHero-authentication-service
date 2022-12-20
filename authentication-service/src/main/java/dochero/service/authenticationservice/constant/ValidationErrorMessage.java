@@ -8,6 +8,7 @@ public interface ValidationErrorMessage {
   String ACCOUNT_NOT_FOUND = "Account Not Found";
   String WRONG_PASSWORD = "Wrong Password";
   String EMPTY_ROLE = "roleName cannot by empty";
+  String SERVICE_CALLING_EXCEPTION = "can not call api";
 
 }
 

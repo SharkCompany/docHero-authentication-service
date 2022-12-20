@@ -1,5 +1,6 @@
 package dochero.service.authenticationservice.web.rest;
 
+import dochero.service.authenticationservice.exception.ServiceCallingException;
 import dochero.service.authenticationservice.openfeign.AccountServiceFeignClient;
 import dochero.service.authenticationservice.openfeign.DepartmentServiceFeignClient;
 import dochero.service.authenticationservice.openfeign.DocumentRevisionServiceFeignClient;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/auth")
 @RequiredArgsConstructor
 public class PingController {
+
   @Autowired
   AccountServiceFeignClient accountServiceFeignClient;
 
@@ -35,12 +37,24 @@ public class PingController {
 
   @GetMapping("/ping-to-document-service")
   public String PingToDocumentService() {
-    return documentRevisionServiceFeignClient.ping();
+    String res;
+    try {
+      res = documentRevisionServiceFeignClient.ping();
+    } catch (Exception ex) {
+      throw new ServiceCallingException(ex.toString());
+    }
+
+    return res;
   }
 
   @GetMapping("/ping-to-department-service")
   public String PingToDepartmentService() {
-    return departmentServiceFeignClient.ping();
-
+    String res;
+    try {
+      res = departmentServiceFeignClient.ping();
+    } catch (Exception ex) {
+      throw new ServiceCallingException(ex.toString());
+    }
+    return res;
   }
 }

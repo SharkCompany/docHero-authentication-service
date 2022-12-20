@@ -59,4 +59,16 @@ public class ApplicationExceptionHandler {
         .build();
     return new ResponseEntity<>(responseBody, HttpStatus.BAD_REQUEST);
   }
+
+  @ExceptionHandler({
+      ServiceCallingException.class})
+  @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+  public ResponseEntity<Object> handleServiceCallingException(ServiceCallingException exception, WebRequest request) {
+    var responseBody = ErrorResponseSchema.builder()
+        .timestamp(LocalDateTime.now())
+        .messages(exception.getMessage())
+        .statusCode(HttpStatus.INTERNAL_SERVER_ERROR)
+        .build();
+    return new ResponseEntity<>(responseBody, HttpStatus.INTERNAL_SERVER_ERROR);
+  }
 }
