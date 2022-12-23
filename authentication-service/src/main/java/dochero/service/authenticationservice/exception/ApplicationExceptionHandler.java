@@ -71,4 +71,16 @@ public class ApplicationExceptionHandler {
         .build();
     return new ResponseEntity<>(responseBody, HttpStatus.INTERNAL_SERVER_ERROR);
   }
+
+  @ExceptionHandler({
+      InvalidTokenException.class})
+  @ResponseStatus(HttpStatus.UNAUTHORIZED)
+  public ResponseEntity<Object> handleInvalidTokenException(InvalidTokenException exception, WebRequest request) {
+    var responseBody = ErrorResponseSchema.builder()
+        .timestamp(LocalDateTime.now())
+        .messages(exception.getMessage())
+        .statusCode(HttpStatus.UNAUTHORIZED)
+        .build();
+    return new ResponseEntity<>(responseBody, HttpStatus.UNAUTHORIZED);
+  }
 }

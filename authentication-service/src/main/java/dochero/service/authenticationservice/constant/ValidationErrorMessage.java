@@ -9,6 +9,7 @@ public interface ValidationErrorMessage {
   String WRONG_PASSWORD = "Wrong Password";
   String EMPTY_ROLE = "roleName cannot by empty";
   String SERVICE_CALLING_EXCEPTION = "can not call api";
+  String INVALID_TOKEN = "Invalid Token";
 
 }
 

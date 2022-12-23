@@ -3,6 +3,7 @@ package dochero.service.authenticationservice.web.rest;
 
 import dochero.service.authenticationservice.dto.request.LoginRequest;
 import dochero.service.authenticationservice.dto.response.LoginResponse;
+import dochero.service.authenticationservice.dto.response.ValidateTokenResponse;
 import dochero.service.authenticationservice.exception.ValidationException;
 import dochero.service.authenticationservice.openfeign.AccountServiceFeignClient;
 import dochero.service.authenticationservice.service.AuthService;
@@ -12,10 +13,13 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import javax.validation.Valid;
+import javax.ws.rs.PathParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,5 +57,13 @@ public class AuthenticationController {
     }
     return new ResponseEntity<>(authService.grantUser(loginRequest), HttpStatus.OK);
   }
+
+  @GetMapping("/validate-token")
+  public ValidateTokenResponse login(
+      @PathParam("token") String token
+  ) {
+    return authService.validateToken(token);
+  }
+
 
 }

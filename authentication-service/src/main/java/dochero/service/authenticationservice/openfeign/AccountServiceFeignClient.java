@@ -24,6 +24,9 @@ public interface AccountServiceFeignClient {
   @GetMapping("/account/{accountId}/departments")
   public List<String> getDocumentsOfUser(@PathVariable String accountId);
 
+  @GetMapping("/account/{accountId}")
+  public AccountDTO getAccount(@PathVariable String accountId);
+
 
 
 
