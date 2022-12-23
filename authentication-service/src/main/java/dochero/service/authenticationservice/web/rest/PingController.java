@@ -25,7 +25,7 @@ public class PingController {
   DepartmentServiceFeignClient departmentServiceFeignClient;
 
 
-  @GetMapping("/")
+  @GetMapping("")
   public String Greeting() {
     return "Hello From Authentication Service";
   }
