@@ -5,9 +5,11 @@ import dochero.service.authenticationservice.dto.account.AccountDTO;
 import dochero.service.authenticationservice.dto.account.ValidateAccountRequestDTO;
 import dochero.service.authenticationservice.dto.request.LoginRequest;
 import dochero.service.authenticationservice.dto.response.LoginResponse;
+import dochero.service.authenticationservice.exception.ServiceCallingException;
 import dochero.service.authenticationservice.exception.WrongPasswordException;
 import dochero.service.authenticationservice.openfeign.AccountServiceFeignClient;
 import dochero.service.authenticationservice.security.JwtUtils;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,11 +36,20 @@ public class AuthService {
       throw new WrongPasswordException(ex.toString());
     }
 
+    List<String> departments;
+
+    try {
+      departments = accountServiceFeignClient.getDocumentsOfUser(accountDTO.getId());
+    } catch (Exception ex) {
+      throw new ServiceCallingException(
+          "Can not call to Account Service To Get Departments. Error: " + ex);
+    }
+
     return LoginResponse.builder()
         .email(accountDTO.getEmail())
         .roleName(accountDTO.getRoleName())
         .fullName(accountDTO.getFullName())
-        .departmentId(accountDTO.getDepartmentId())
+        .departmentIDs(departments)
         .accessToken(
             jwtUtils.generateAccessToken(accountDTO)
         )

@@ -1,5 +1,6 @@
 package dochero.service.authenticationservice.dto.response;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +14,7 @@ public class LoginResponse extends BaseResponse{
   private String email;
   private String roleName;
   private String fullName;
-  private String departmentId;
+  private List<String> departmentIDs;
   private String accessToken;
   private Long expired;
 }
