@@ -9,10 +9,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableFeignClients
 @OpenAPIDefinition(info = @Info(title = "Authentication Service API", version = "1.0", description = "Account Information"))
-public class AuthenticaionServiceApplication {
+public class AuthenticationServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AuthenticaionServiceApplication.class, args);
+		SpringApplication.run(AuthenticationServiceApplication.class, args);
 	}
 
 }
