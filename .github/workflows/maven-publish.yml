@@ -55,4 +55,4 @@ jobs:
         host: ${{ secrets.SERVER_HOST }}
         username: ${{ secrets.SERVER_USERNAME }}
         password: ${{ secrets.SERVER_PASSWORD }}
-        script: cd /home/novapo/docker-compose-list/dochero/;git pull;docker stop dochero-authentication-service;docker rm dochero-authentication-service; docker pull phongvanngo/dochero-authentication-service;docker-compose up -d authentication-service; 
+        script: cd /home/novapo/docker-compose-list/dochero/;git pull;docker stop dochero-authentication-service;docker rm dochero-authentication-service; docker pull phongvanngo/dochero-authentication-service;docker-compose -f authentication.docker-compose.yml  up -d ; 
