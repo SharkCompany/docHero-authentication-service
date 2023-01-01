@@ -1,5 +1,6 @@
 package dochero.service.authenticationservice.security;
 
+import dochero.service.authenticationservice.constant.CommonConstants;
 import dochero.service.authenticationservice.dto.account.AccountDTO;
 import dochero.service.authenticationservice.exception.InvalidTokenException;
 import io.jsonwebtoken.Claims;
@@ -21,7 +22,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class JwtUtils {
 
-  private static final long EXPIRE_DURATION = 30L * 24 * 60 * 60 * 1000; // 1 month
   private final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
   @Value("${app.jwt.secret}")
@@ -37,7 +37,7 @@ public class JwtUtils {
 //        .claim("authorities", populateAuthorities(user.get()))
         .claim("roles", user.getRoleName())
         .setIssuedAt(new Date())
-        .setExpiration(new Date(System.currentTimeMillis() + EXPIRE_DURATION))
+        .setExpiration(new Date(System.currentTimeMillis() + CommonConstants.EXPIRE_DURATION))
         .signWith(SignatureAlgorithm.HS512, SECRET_KEY)
         .compact();
   }
