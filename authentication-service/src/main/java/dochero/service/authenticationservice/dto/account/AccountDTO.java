@@ -11,8 +11,15 @@ import lombok.ToString;
 @ToString
 public class AccountDTO {
   private String fullName;
+  private String description;
+  private String title;
+  private String avatar;
+  private String coverPhoto;
+  private String about;
   private String roleName;
   private String email;
+  private String location;
   private String id;
-  private String departmentId;
+  private String department;
+  private String[] departmentIDs;
 }

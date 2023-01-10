@@ -83,6 +83,13 @@ public class AuthService {
         .email(accountDTO.getEmail())
         .roleName(accountDTO.getRoleName())
         .fullName(accountDTO.getFullName())
+        .about(accountDTO.getAbout())
+        .avatar(accountDTO.getAvatar())
+        .coverPhoto(accountDTO.getCoverPhoto())
+        .description(accountDTO.getDescription())
+        .title(accountDTO.getTitle())
+        .location(accountDTO.getLocation())
+        .id(accountDTO.getId())
         .departmentIDs(departments)
         .accessToken(
             jwtUtils.generateAccessToken(accountDTO)

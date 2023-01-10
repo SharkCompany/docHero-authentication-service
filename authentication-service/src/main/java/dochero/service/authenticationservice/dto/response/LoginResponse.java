@@ -17,4 +17,11 @@ public class LoginResponse extends BaseResponse{
   private List<String> departmentIDs;
   private String accessToken;
   private Long expired;
+  private String title;
+  private String avatar;
+  private String coverPhoto;
+  private String about;
+  private String id;
+  private String description;
+  private String location;
 }
