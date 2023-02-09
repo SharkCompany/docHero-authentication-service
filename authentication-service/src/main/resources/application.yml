@@ -5,11 +5,11 @@ spring:
     name: "authentication-service"
   data:
     mongodb:
-      host: 45.119.83.217
+      host: 103.48.192.223
       port: 54324
       username: dochero
       password: ksharkinc2022
-      database: dochero-authentication-db
+      database: dochero-authentication
   output:
     ansi:
       enabled: always
